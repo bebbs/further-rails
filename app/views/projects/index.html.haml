@@ -1,1 +1,4 @@
+= if @projects.any?
+  - @projects.each do |project|
+    = render 'partials/project', project: project
 = link_to 'Add a project', new_project_path

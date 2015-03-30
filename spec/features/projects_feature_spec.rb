@@ -4,7 +4,14 @@ feature 'Project' do
     visit '/projects'
   end
 
-  context 'No projects have been added' do
+  context 'Display projects' do
+
+    scenario 'Lists all of the projects' do
+      Project.create(name: 'Sample project', description: 'Sample description')
+
+      visit '/projects'
+      expect(page).to have_content 'Sample project'
+    end
     scenario 'Displays a prompt to add a project' do
       expect(page).to have_link 'Add a project'
     end
